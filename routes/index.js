@@ -18,9 +18,11 @@ const endpoints = {
   POST: ["/area51", "/users", "/series"]
 };
 
-router.route("/").get((req, res) => res.json(endpoints));
+const routing = endpoint => router.route(endpoint);
 
-router.route("/over/:ki").get((req, res) => {
+routing("/").get((req, res) => res.json(endpoints));
+
+routing("/over/:ki").get((req, res) => {
   const { ki } = req.params;
 
   ki <= 9000
@@ -28,13 +30,17 @@ router.route("/over/:ki").get((req, res) => {
     : res.sendFile(path.join(__dirname, "../public/images", "over9000.jpg"));
 });
 
-router.route("/download").get((req, res) => {
+routing("/download").get((req, res) => {
   res.send("no te entiendo");
 });
 
-router.route("/download/internet").get((req, res) => {
+routing("/download/internet").get((req, res) => {
   res.download(
     path.join(__dirname, "../public/images", "download-all-the-internet.jpeg")
   );
 });
+
+routing("/area51").get((req, res) =>
+  res.status(401).json({ message: "RESTRICTED AREA. NO TRESPASSING." })
+);
 module.exports = router;
