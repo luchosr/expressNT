@@ -32,4 +32,11 @@ router.route("/download").get((req, res) => {
   res.send("no te entiendo");
 });
 
+router.route("/download/internet").get((req, res) => {
+  res.download(
+    path.join(__dirname, "../public/images", "download-all-the-internet.jpeg")
+  );
+});
 module.exports = router;
+
+// /Users/lucianoramello/Documents/undefinedSchool/practicas/NodePractice/express/noTemplate/public/images/download-all-the-internet.jpeg
