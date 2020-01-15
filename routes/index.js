@@ -28,4 +28,8 @@ router.route("/over/:ki").get((req, res) => {
     : res.sendFile(path.join(__dirname, "../public/images", "over9000.jpg"));
 });
 
+router.route("/download").get((req, res) => {
+  res.send("no te entiendo");
+});
+
 module.exports = router;
