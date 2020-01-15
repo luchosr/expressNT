@@ -38,5 +38,3 @@ router.route("/download/internet").get((req, res) => {
   );
 });
 module.exports = router;
-
-// /Users/lucianoramello/Documents/undefinedSchool/practicas/NodePractice/express/noTemplate/public/images/download-all-the-internet.jpeg
