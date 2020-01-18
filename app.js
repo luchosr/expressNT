@@ -7,8 +7,10 @@ const PORT = process.env.port;
 const HOSTNAME = process.env.hostname;
 const app = express();
 
-app
-  .use(indexRouter)
-  .listen(PORT, () =>
-    console.log(`Server listening on http://${HOSTNAME}:${PORT}`)
-  );
+app.use(express.json());
+
+app.use(indexRouter);
+
+app.listen(PORT, () =>
+  console.log(`Server listening on http://${HOSTNAME}:${PORT}`)
+);
