@@ -52,4 +52,8 @@ routing("/area51")
       : res.status(401).json({ message: "RESTRICTED AREA. NO TRESPASSING" });
   });
 
+routing("/undefined").get((req, res) => {
+  res.status(404).send("404 - Ni idea, no lo encuentro");
+});
+
 module.exports = router;
