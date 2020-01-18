@@ -40,7 +40,16 @@ routing("/download/internet").get((req, res) => {
   );
 });
 
-routing("/area51").get((req, res) =>
-  res.status(401).json({ message: "RESTRICTED AREA. NO TRESPASSING." })
-);
+routing("/area51")
+  .get((req, res) =>
+    res.status(401).json({ message: "RESTRICTED AREA. NO TRESPASSING." })
+  )
+  .post((req, res) => {
+    const { secret } = req.body;
+
+    return secret === "aliens"
+      ? res.json({ message: "ACCESS GRANTED" })
+      : res.status(401).json({ message: "RESTRICTED AREA. NO TRESPASSING" });
+  });
+
 module.exports = router;
